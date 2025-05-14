@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-reservation-form',
   imports: [],
   templateUrl: './reservation-form.component.html',
-  styleUrl: './reservation-form.component.scss'
+  styleUrl: './reservation-form.component.scss',
+  standalone:true
 })
 export class ReservationFormComponent {
 
