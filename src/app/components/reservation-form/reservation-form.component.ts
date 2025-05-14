@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {FormsModule, FormGroup,  ReactiveFormsModule} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormsModule, FormGroup, ReactiveFormsModule, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-reservation-form',
@@ -8,12 +8,32 @@ import {FormsModule, FormGroup,  ReactiveFormsModule} from '@angular/forms';
   styleUrl: './reservation-form.component.scss',
   standalone:true
 })
-export class ReservationFormComponent {
- public reservationForm: FormGroup = new FormGroup({});
+export class ReservationFormComponent implements OnInit {
+
+  public reservationForm: FormGroup = new FormGroup({});
 
 
-
- public onSubmit(){
+ constructor(private formBuilder: FormBuilder) {
 
  }
+
+  ngOnInit(): void {
+    this.reservationForm = this.formBuilder.group({
+      checkInDate: ['', Validators.required],
+      checkOutDate: ['', Validators.required],
+      guestName: ['', Validators.required],
+      guestEmail: ['', [Validators.required,Validators.email]],
+      roomNumber: ['', Validators.required],
+    })
+  }
+
+ public onSubmit(){
+    if(this.reservationForm.valid){
+      console.log(this.reservationForm.value);
+    }else{
+      console.error('error');
+      console.log('test')
+    }
+ }
+
 }
