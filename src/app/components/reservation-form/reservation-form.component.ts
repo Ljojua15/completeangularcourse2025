@@ -33,6 +33,7 @@ export class ReservationFormComponent implements OnInit {
     if(this.reservationForm.valid){
       console.log(this.reservationForm.value);
     }else{
+      // test
       console.error('error');
     }
  }
