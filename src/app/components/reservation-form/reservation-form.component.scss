@@ -29,6 +29,12 @@ form{
     grid-column: 1 / -1;
     align-items: center;
   }
+
+  .disabled{
+      opacity: 0.5 ;
+      pointer-events: none;
+      cursor: none;
+     }
   button {
        grid-column: 1 / -1;
        justify-self: center;
@@ -39,4 +45,8 @@ form{
        color: white;
        cursor: pointer;
      }
+     p{
+      color: red;
+     }
+
 }

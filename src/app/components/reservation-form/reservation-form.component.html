@@ -1,27 +1,32 @@
 <form  [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
     <div>
       <label>CHECK-IN DATE:</label>
+      <p *ngIf="reservationForm.get('checkInDate')?.invalid &&  reservationForm.get('checkInDate')?.touched">ფორმა აუცილებელია</p>
       <input type="date" formControlName="checkInDate">
     </div>
   <div>
     <label>CHECK-OUT DATE:</label>
+       <p *ngIf="reservationForm.get('checkOutDate')?.invalid && reservationForm.get('checkOutDate')?.touched">ფორმა აუცილებელია</p>
     <input type="date" formControlName="checkOutDate">
   </div>
 
   <div>
     <label>GUEST NAME:</label>
+       <p *ngIf="reservationForm.get('guestName')?.invalid && reservationForm.get('guestName')?.touched">ფორმა აუცილებელია</p>
     <input type="text" formControlName="guestName">
   </div>
 
   <div>
     <label>GUEST EMAIL:</label>
+       <p *ngIf="reservationForm.get('guestEmail')?.invalid && reservationForm.get('guestEmail')?.touched">ფორმა აუცილებელია</p>
     <input type="email" formControlName="guestEmail">
   </div>
 
   <div>
     <label>ROOM NUMBER:</label>
+       <p *ngIf="reservationForm.get('roomNumber')?.invalid && reservationForm.get('roomNumber')?.touched">ფორმა აუცილებელია</p>
     <input type="number" formControlName="roomNumber">
   </div>
 
-  <button type="submit">SUBMIT</button>
+  <button type="submit" [class.disabled]="reservationForm.invalid" >SUBMIT</button>
 </form>

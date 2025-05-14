@@ -1,9 +1,11 @@
+import { CommonModule } from '@angular/common';
 import {Component, OnInit} from '@angular/core';
 import {FormsModule, FormGroup, ReactiveFormsModule, FormBuilder, Validators} from '@angular/forms';
+import { error } from 'node:console';
 
 @Component({
   selector: 'app-reservation-form',
-  imports: [FormsModule, ReactiveFormsModule,],
+  imports: [FormsModule, ReactiveFormsModule,CommonModule],
   templateUrl: './reservation-form.component.html',
   styleUrl: './reservation-form.component.scss',
   standalone:true
@@ -32,7 +34,6 @@ export class ReservationFormComponent implements OnInit {
       console.log(this.reservationForm.value);
     }else{
       console.error('error');
-      console.log('test')
     }
  }
 
