@@ -1,5 +1,5 @@
 :host{
-  width: 100%;
+  width: calc(100% - 10px);
   height: 80vh;
   display: flex;
   justify-content: center;
@@ -12,6 +12,7 @@ form{
   gap: 20px;
   max-width: 700px;
   margin: 0 auto;
+
   div{
     display: flex;
     flex-direction: column;
@@ -47,6 +48,7 @@ form{
      }
      p{
       color: red;
+       padding: 4px;
      }
 
 }

@@ -4,5 +4,5 @@ export interface IReservations {
     checkOutDate:Date,
     guestName:string,
     guestEmail:string,
-    roomNummber:number
+    roomNumber:number
 }
