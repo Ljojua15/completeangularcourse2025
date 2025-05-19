@@ -9,6 +9,8 @@ import {FormGroup} from '@angular/forms';
 export class ReservationService {
   private reservations: IReservations[] = []
 
+  //crud
+
   public getReservations() :IReservations[] {
     return this.reservations;
   }
@@ -19,6 +21,7 @@ export class ReservationService {
 
   public addReservation(reservation: IReservations) {
     this.reservations.push(reservation);
+    console.log(this.reservations, 'test');
   }
 
   public deleteReservation(id:string) : void {

@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {FormsModule, FormGroup, ReactiveFormsModule, FormBuilder, Validators} from '@angular/forms';
+import {ReservationService} from '../../lib/services/reservation.service';
+import {IReservations} from '../../lib/interface/ireservations';
 
 @Component({
   selector: 'app-reservation-form',
@@ -11,12 +13,15 @@ import {FormsModule, FormGroup, ReactiveFormsModule, FormBuilder, Validators} fr
 })
 export class ReservationFormComponent implements OnInit {
 
+  public readonly reservationService = inject(ReservationService)
+  public readonly formBuilder = inject(FormBuilder)
   public reservationForm: FormGroup = new FormGroup({});
 
 
- constructor(private formBuilder: FormBuilder) {
 
- }
+ // constructor(private formBuilder: FormBuilder) {
+ //
+ // }
 
   ngOnInit(): void {
     this.reservationForm = this.formBuilder.group({
@@ -30,6 +35,8 @@ export class ReservationFormComponent implements OnInit {
 
  public onSubmit(){
     if(this.reservationForm.valid){
+      let reservation: IReservations = this.reservationForm.value;
+      this.reservationService.addReservation(reservation)
       console.log(this.reservationForm.value);
     }else{
       // test
