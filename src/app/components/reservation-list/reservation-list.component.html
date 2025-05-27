@@ -1,1 +1,23 @@
-<p>reservation-list works!</p>
+<div class="reservation-list">
+<button class="reservation-list__back" (click)="backToForm()"> Back</button>
+<div  class="reservation-list__content">
+        <h2>Reservation List : </h2>
+
+
+@if (reservation.length ) {
+    <ul>
+    <li *ngFor="let rese of reservation">
+        GestName : {{rese.guestName}} <br>
+        GestEmail: {{rese.guestEmail}} <br>
+        StartDate : {{rese.checkInDate}} <br>
+        EndDate: {{rese.checkOutDate}} <br>
+        RoomNumber: {{rese.roomNumber}} <br>
+        <div><button (click)="deleteReservation(rese.id)" class="reservation-list__content--detete">DELETE</button> ||
+             <button [routerLink]="['/edit', rese.id]" class="reservation-list__content--update">UPDATE</button></div>
+    </li> 
+</ul>
+}@else{
+        <p>No Reservations</p>
+}
+</div>
+</div>

@@ -1,11 +1,36 @@
-import { Component } from '@angular/core';
+import { Component,inject,OnInit } from '@angular/core';
+import { ReservationService } from '../../lib/services/reservation.service';
+import {IReservations} from '../../lib/interface/ireservations';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-reservation-list',
-  imports: [],
+  imports: [CommonModule, RouterModule],
   templateUrl: './reservation-list.component.html',
   styleUrl: './reservation-list.component.scss'
 })
-export class ReservationListComponent {
+export class ReservationListComponent implements OnInit  {
 
+  private reservationService = inject(ReservationService)
+  private router = inject(Router)
+
+  public reservation: IReservations[] = []
+
+  ngOnInit(): void {
+    this.reservation = this.reservationService.getReservations()
+  }
+
+  public backToForm(){
+    this.router.navigate(['/new'])
+  }
+
+  public deleteReservation(id: string){
+    console.log(id)
+    this.reservationService.deleteReservation(id)
+  }
+    public editReservation(id: string){
+    this.reservationService.deleteReservation(id)
+  }
 }
