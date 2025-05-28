@@ -34,12 +34,16 @@ export class ReservationFormComponent implements OnInit {
       this.reservationId = params.get('id');
 
       if (this.reservationId) {
-        const reservation = this.reservationService.getReservation(this.reservationId);
+        // const reservation = this.reservationService.getReservationApi(this.reservationId);
 
-        if (reservation) {
-          this.reservationForm.patchValue(reservation);
-        } else {
-        }
+        // if (reservation) {
+        //   this.reservationForm.patchValue(reservation);
+        // }
+        this.reservationService.getReservationApi(this.reservationId).subscribe(reservation => {
+          if(reservation){
+            this.reservationForm.patchValue(reservation)
+          }
+        })
       }
     });
   }

@@ -40,6 +40,11 @@ export class ReservationService {
     return this.reservations.find(reservation => reservation.id === id);
   }
 
+  
+    public getReservationApi(id:string) : Observable<IReservations> {
+    return this.http.get<IReservations>(this.apiUrl + "/reservation/" + id)
+  }
+
   public addReservation(reservation: IReservations) {
     reservation.id = Date.now().toString()
     this.reservations.push(reservation);
