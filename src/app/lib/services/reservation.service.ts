@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import {IReservations} from '../interface/ireservations';
 import {FormGroup} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
+import { isPlatformBrowser } from '@angular/common';
 
 
 @Injectable({
@@ -10,11 +11,14 @@ import {HttpClient} from '@angular/common/http';
 export class ReservationService {
   private reservations: IReservations[] = []
 
-  constructor() {
-    let savedReservations = localStorage.getItem('reservations');
-    this.reservations = savedReservations ? JSON.parse(savedReservations) : [];
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    if (isPlatformBrowser(this.platformId)) {
+      const savedReservations = localStorage.getItem('reservations');
+      this.reservations = savedReservations ? JSON.parse(savedReservations) : [];
+    } else {
+      this.reservations = [];
+    }
   }
-
   //crud
 
   public getReservations() :IReservations[] {
@@ -28,19 +32,32 @@ export class ReservationService {
   public addReservation(reservation: IReservations) {
     reservation.id = Date.now().toString()
     this.reservations.push(reservation);
-    console.log(this.reservations, 'test');
-    localStorage.setItem('reservations', JSON.stringify(this.reservations));
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('reservations', JSON.stringify(this.reservations));
+    }
   }
 
   public deleteReservation(id:string) : void {
     let index = this.reservations.findIndex(reservation => reservation.id === id);
     this.reservations.splice(index, 1);
-    localStorage.setItem('reservations', JSON.stringify(this.reservations));
+   if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('reservations', JSON.stringify(this.reservations));
+    }
   }
 
+  // public updateReservation(id: string, update: IReservations) {
+  //   let index = this.reservations.findIndex(reservation => reservation.id === id);
+  //   this.reservations[index] = update;
+  //   localStorage.setItem('reservations', JSON.stringify(this.reservations));
+  // }
+
   public updateReservation(id: string, update: IReservations) {
-    let index = this.reservations.findIndex(reservation => reservation.id === id);
-    this.reservations[index] = update;
-    localStorage.setItem('reservations', JSON.stringify(this.reservations));
+  const index = this.reservations.findIndex(reservation => reservation.id === id);
+  if (index !== -1) {
+    this.reservations[index] = { ...update, id }; // <- fix here
+   if (isPlatformBrowser(this.platformId)) {
+        localStorage.setItem('reservations', JSON.stringify(this.reservations));
+      }
   }
+}
 }
