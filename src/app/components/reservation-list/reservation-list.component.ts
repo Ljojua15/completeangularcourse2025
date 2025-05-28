@@ -19,7 +19,16 @@ export class ReservationListComponent implements OnInit  {
   public reservation: IReservations[] = []
 
   ngOnInit(): void {
-    this.reservation = this.reservationService.getReservations()
+    // this.reservationService.getReservationsApi().subscribe(res => {
+    //   console.log(res, 'test');
+      
+    //   this.reservation = res
+    // })
+    this.reservationService.getReservationsApi().subscribe((res) => {
+      this.reservation = res
+      console.log(res);
+      
+    })
   }
 
   public backToForm(){
