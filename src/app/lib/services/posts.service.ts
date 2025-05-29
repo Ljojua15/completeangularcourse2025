@@ -12,6 +12,8 @@ export class PostsService {
   public getUsers$() : Observable<IUser[]> {
     return this.http.get<IUser[]>(this.postApi + "/users")
   }
-
+  public getCureentUser$(id:number) : Observable<IUser> {
+    return this.http.get<IUser>(this.postApi + "/users/" + id)
+  }
 
 }
