@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import {Component, inject, OnInit} from '@angular/core';
 import {FormsModule, FormGroup, ReactiveFormsModule, FormBuilder, Validators} from '@angular/forms';
-import {ReservationService} from '../../lib/services/reservation.service';
-import {IReservations} from '../../lib/interface/ireservations';
+import {ReservationService} from '../../../lib/services/reservation.service';
+import {IReservations} from '../../../lib/interface/ireservations';
 import {Router, ActivatedRoute } from '@angular/router';
 
 @Component({

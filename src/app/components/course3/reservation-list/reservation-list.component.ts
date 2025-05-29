@@ -1,6 +1,6 @@
 import { Component,inject,OnInit } from '@angular/core';
-import { ReservationService } from '../../lib/services/reservation.service';
-import {IReservations} from '../../lib/interface/ireservations';
+import { ReservationService } from '../../../lib/services/reservation.service';
+import {IReservations} from '../../../lib/interface/ireservations';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
