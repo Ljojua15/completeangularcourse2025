@@ -53,9 +53,15 @@ export class ReservationFormComponent implements OnInit {
       const reservation: IReservations = this.reservationForm.value;
 
       if (this.reservationId) {
-        this.reservationService.updateReservation(this.reservationId, reservation);
+        this.reservationService.updateReservationApi(this.reservationId, reservation).subscribe(() => {
+          console.log('processing');
+          
+        });
       } else {
-        this.reservationService.addReservation(reservation);
+        this.reservationService.addReservationApi(reservation).subscribe(() => {
+          console.log('adding');
+          
+        });
       }
 
       this.router.navigate(['/list']);

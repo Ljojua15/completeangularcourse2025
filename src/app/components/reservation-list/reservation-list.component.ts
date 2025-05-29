@@ -35,9 +35,17 @@ export class ReservationListComponent implements OnInit  {
     this.router.navigate(['/new'])
   }
 
-  public deleteReservation(id: string){
-    console.log(id)
-    this.reservationService.deleteReservation(id)
+  // public deleteReservation(id: string){
+  //   console.log(id)
+  //   this.reservationService.deleteReservation(id)
+  // }
+
+    public deleteReservation(id: string){
+  
+    this.reservationService.deleteReservationApi(id).subscribe((x) => {
+      console.log('done' , x);
+      
+    })
   }
     public editReservation(id: string){
       console.log('tteesstt');

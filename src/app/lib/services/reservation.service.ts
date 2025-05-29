@@ -53,12 +53,20 @@ export class ReservationService {
     // }
   }
 
+    public addReservationApi(reservation: IReservations) : Observable<void> {
+    return this.http.post<void>(this.apiUrl + "/reservation/", reservation)
+  }
+
   public deleteReservation(id:string) : void {
     let index = this.reservations.findIndex(reservation => reservation.id === id);
     this.reservations.splice(index, 1);
   //  if (isPlatformBrowser(this.platformId)) {
   //     localStorage.setItem('reservations', JSON.stringify(this.reservations));
   //   }
+  }
+
+    public deleteReservationApi(id:string) : Observable<void> {
+    return this.http.delete<void>(this.apiUrl + "/reservation/" + id)
   }
 
   // public updateReservation(id: string, update: IReservations) {
@@ -75,5 +83,12 @@ export class ReservationService {
   //       localStorage.setItem('reservations', JSON.stringify(this.reservations));
   //     }
   }
+
+
 }
+
+
+    public updateReservationApi(id: string, update: IReservations): Observable<void> {
+    return this.http.put<void>(this.apiUrl + "/reservation/" + id, update)
+  }
 }
