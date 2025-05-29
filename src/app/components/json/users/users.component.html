@@ -1,1 +1,31 @@
-<p>users works!</p>
+<div class="container mt-4" *ngIf="usersList$ | async as usersList">
+  <div class="row">
+    @if(usersList.length){
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let user of usersList">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{ user.name }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ user.username }}</h6>
+          <p class="card-text">
+            📧 {{ user.email }}<br />
+            📱 {{ user.phone }}<br />
+            🌐 <a href="http://{{ user.website }}" target="_blank">{{ user.website }}</a>
+          </p>
+          <hr />
+          <p class="card-text mb-1">
+            <strong>Address:</strong><br />
+            {{ user.address.street }}, {{ user.address.suite }}<br />
+            {{ user.address.city }} - {{ user.address.zipcode }}
+          </p>
+          <p class="card-text mb-0">
+            <strong>Company:</strong><br />
+            {{ user.company.name }}
+          </p>
+        </div>
+      </div>
+    </div>
+    }@else {
+        <p>Users Not Found - 404</p>
+    }
+  </div>
+</div>
