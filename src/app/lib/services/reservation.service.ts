@@ -31,7 +31,7 @@ export class ReservationService {
   public getReservations() :IReservations[] {
     return this.reservations;
   }
-
+///sdsaadsdasd
   public getReservationsApi() : Observable<IReservations[]> {
     return this.http.get<IReservations[]>(this.apiUrl + "/reservations")
   }
@@ -40,7 +40,7 @@ export class ReservationService {
     return this.reservations.find(reservation => reservation.id === id);
   }
 
-  
+
     public getReservationApi(id:string) : Observable<IReservations> {
     return this.http.get<IReservations>(this.apiUrl + "/reservation/" + id)
   }
@@ -78,7 +78,7 @@ export class ReservationService {
   public updateReservation(id: string, update: IReservations) {
   const index = this.reservations.findIndex(reservation => reservation.id === id);
   if (index !== -1) {
-    this.reservations[index] = { ...update, id }; 
+    this.reservations[index] = { ...update, id };
   //  if (isPlatformBrowser(this.platformId)) {
   //       localStorage.setItem('reservations', JSON.stringify(this.reservations));
   //     }
