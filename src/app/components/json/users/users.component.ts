@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { IUser } from '../../../lib/interface/users.interface';
 import { PostsService } from '../../../lib/services/posts.service';
 import Swal from 'sweetalert2';
+import { log } from 'node:console';
 
 @Component({
   selector: 'app-users',
@@ -15,19 +16,21 @@ export class UsersComponent {
 private readonly postsService = inject(PostsService)
 public users : IUser[] = []
 
-public usersList$ = this.postsService.getUsers$()
+public usersList$ = this.postsService.getUsers$();
 
-  showAlert() {
+// public userPersData$ = this.postsService.getCureentUser$(2).subscribe((res) => {
+//   console.log(res.address)
+// })
+
+  showAlert(id:number) {
+      this.postsService.getCureentUser$(id).subscribe((res) => {
+    console.log(res.company.bs)
     Swal.fire({
-      title: "<strong> <u>test</u></strong>",
+      title: "<strong> <u>Company</u></strong>",
       icon: "info",
-      html: `
-        You can use <b>bold text</b>,
-        <a href="#" autofocus>links</a>,
-        and other HTML tags
-      `,
+      html: `<h1></h1>`,
       showCloseButton: true,
-      showCancelButton: true,
+      showCancelButton: false,
       focusConfirm: false,
       confirmButtonText: `
         <i class="fa fa-thumbs-up"></i> Great!
@@ -38,6 +41,9 @@ public usersList$ = this.postsService.getUsers$()
       `,
       cancelButtonAriaLabel: "Thumbs down"
     });
+})
+
+
   }
 
 }

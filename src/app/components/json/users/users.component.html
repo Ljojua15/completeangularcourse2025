@@ -10,6 +10,7 @@
             📧 {{ user.email }}<br />
             📱 {{ user.phone }}<br />
             🌐 <a href="http://{{ user.website }}" target="_blank">{{ user.website }}</a>
+            
           </p>
           <hr />
           <p class="card-text mb-1">
@@ -17,11 +18,12 @@
             {{ user.address.street }}, {{ user.address.suite }}<br />
             {{ user.address.city }} - {{ user.address.zipcode }}
           </p>
-          <p class="card-text mb-0">
+          {{user.id}}
+          <!-- <p class="card-text mb-0">
             <strong>Company:</strong><br />
             {{ user.company.name }}
-          </p>
-      <button (click)="showAlert()" class="btn btn-outline-primary mt-2">
+          </p> -->
+      <button (click)="showAlert(user.id)" class="btn btn-outline-primary mt-2">
   Show Info
 </button>
         </div>
