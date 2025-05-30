@@ -29,7 +29,7 @@ private subscription = new Subscription();
           icon: 'info',
           html: `
             <h1>${result.company.name}</h1><br>
-            <h2>${result.company.name}</h2><br>
+            <h2>${result.company.bs}</h2><br>
             <h3>${result.company.catchPhrase}</h3>
           `,
           showCloseButton: true,

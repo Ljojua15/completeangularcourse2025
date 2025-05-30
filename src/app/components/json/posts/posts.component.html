@@ -1,18 +1,77 @@
-<div class="col-md-4" *ngIf="usersWithName$ | async as allPosts">
-  <div class="card h-100" *ngFor="let post of allPosts">
-    <div class="card-header">
-      <h5 class="mb-0">{{ post.id }}</h5>
-      <h5 class="mb-0">User:{{ post.userName }}</h5>
-      <h5 class="mb-0">nick:{{ post.nickName }}</h5>
-    </div>
-    <div class="card-body">
-      <h2 class="card-title">{{ post.title }}</h2>
-      <p class="card-text">{{ post.body}}</p>
-    </div>
-    <div class="card-footer text-end">
-      <button class="btn btn-outline-primary btn-sm" >
-        View Comments
-      </button>
+<!--<div class="col-md-4" *ngIf="usersWithName$ | async as allPosts">-->
+<!--  <div class="card h-100" *ngFor="let post of allPosts">-->
+<!--    <div class="card-header">-->
+<!--      <h5 class="mb-0">{{ post.id }}</h5>-->
+<!--      <h5 class="mb-0">User:{{ post.userName }}</h5>-->
+<!--      <h5 class="mb-0">nick:{{ post.nickName }}</h5>-->
+<!--    </div>-->
+<!--    <div class="card-body">-->
+<!--      <h2 class="card-title">{{ post.title }}</h2>-->
+<!--      <p class="card-text">{{ post.body}}</p>-->
+<!--    </div>-->
+<!--    <div class="card-footer text-end">-->
+<!--      <button  class="btn btn-outline-primary btn-sm" >-->
+<!--        <a class="nav-link" routerLink="/comments">Comments</a>-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<div *ngIf="usersWithName$ | async as allPosts" class="row">
+  <div class="col-md-4 mb-4" *ngFor="let post of allPosts">
+    <div class="card h-100">
+      <div class="card-header">
+        <h5 class="mb-0">{{ post.id }}</h5>
+        <h5 class="mb-0">User: {{ post.userName }}</h5>
+        <h5 class="mb-0">nick: {{ post.nickName }}</h5>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">{{ post.title }}</h2>
+        <p class="card-text">{{ post.body }}</p>
+      </div>
+      <div class="card-footer text-end">
+        <button class="btn btn-outline-primary btn-sm">
+          <a class="nav-link p-0" routerLink="/comments">Comments</a>
+        </button>
+      </div>
     </div>
   </div>
 </div>
+
+<!--<div class="row" *ngIf="usersWithName$ | async as allPosts">-->
+<!--  <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let post of allPosts">-->
+<!--    <div class="card h-100">-->
+<!--      <div class="card-header">-->
+<!--        <h5>{{ post.id }}</h5>-->
+<!--        <h5>User: {{ post.userName }}</h5>-->
+<!--        <h5>Nick: {{ post.nickName }}</h5>-->
+<!--      </div>-->
+<!--      <div class="card-body">-->
+<!--        <h2 class="card-title">{{ post.title }}</h2>-->
+<!--        <p class="card-text">{{ post.body }}</p>-->
+<!--      </div>-->
+<!--      <div class="card-footer text-end">-->
+<!--        <a class="btn btn-outline-primary btn-sm" routerLink="/comments">Comments</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<nav aria-label="Page navigation" *ngIf="totalPages > 1">-->
+<!--  <ul class="pagination justify-content-center">-->
+<!--    <li class="page-item" [class.disabled]="currentPage === 1">-->
+<!--      <a class="page-link" (click)="changePage(currentPage - 1)">Previous</a>-->
+<!--    </li>-->
+
+<!--    <li-->
+<!--      class="page-item"-->
+<!--      *ngFor="let page of [].constructor(totalPages); let i = index"-->
+<!--      [class.active]="currentPage === i + 1"-->
+<!--    >-->
+<!--      <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>-->
+<!--    </li>-->
+
+<!--    <li class="page-item" [class.disabled]="currentPage === totalPages">-->
+<!--      <a class="page-link" (click)="changePage(currentPage + 1)">Next</a>-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--</nav>-->
