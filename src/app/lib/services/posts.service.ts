@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IUser } from '../interface/users.interface';
 import {HttpClient} from '@angular/common/http';
+import {IPost} from '../interface/posts.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,4 +17,7 @@ export class PostsService {
     return this.http.get<IUser>(this.postApi + "/users/" + id)
   }
 
+  public getPosts$() : Observable<IPost[]> {
+    return this.http.get<IPost[]>(this.postApi + "/posts")
+  }
 }

@@ -1,1 +1,18 @@
-<p>posts works!</p>
+<div class="col-md-4" *ngIf="usersWithName$ | async as allPosts">
+  <div class="card h-100" *ngFor="let post of allPosts">
+    <div class="card-header">
+      <h5 class="mb-0">{{ post.id }}</h5>
+      <h5 class="mb-0">User:{{ post.userName }}</h5>
+      <h5 class="mb-0">nick:{{ post.nickName }}</h5>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title">{{ post.title }}</h2>
+      <p class="card-text">{{ post.body}}</p>
+    </div>
+    <div class="card-footer text-end">
+      <button class="btn btn-outline-primary btn-sm" >
+        View Comments
+      </button>
+    </div>
+  </div>
+</div>
