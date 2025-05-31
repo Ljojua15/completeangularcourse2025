@@ -22,9 +22,14 @@
             <strong>Company:</strong><br />
             {{ user.company.name }}
           </p> -->
-      <button (click)="showAlert(user.id)" class="btn btn-outline-primary mt-2">
-  Show Info
-</button>
+          <div class="d-flex justify-content-around">
+            <button (click)="showAlert(user.id)" class="btn btn-outline-primary mt-2">
+              Show Info
+            </button>
+            <button (click)="openAlbum(user.id)" class="btn btn-outline-success mt-2">
+              Album
+            </button>
+          </div>
         </div>
       </div>
     </div>

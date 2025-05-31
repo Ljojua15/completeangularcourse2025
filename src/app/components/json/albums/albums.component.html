@@ -1,1 +1,19 @@
-<img src="https://via.placeholder.com/600/5e04a4" alt="album">
+<div class="container my-4" *ngIf="userAlbums$ | async as userAlbums; else loadingAlbum">
+  <div class="row">
+    <div class="col-md-6 mb-4" *ngFor="let album of userAlbums">
+      <div class="card bg-primary text-white h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ album.title }}</h5>
+          <p class="card-text mb-1">Name: {{ album.userName }}</p>
+          <p class="card-text mb-3">Email: {{ album.email }}</p>
+          <button class="btn btn-light btn-sm">
+            Show More
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #loadingAlbum>
+  <app-loader />
+</ng-template>

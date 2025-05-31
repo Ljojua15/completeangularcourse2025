@@ -1,7 +1,6 @@
 import {Component, computed, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PostsService} from '../../../lib/services/posts.service';
-import {toObservable} from '@angular/core/rxjs-interop';
 import {Observable, switchMap, tap} from 'rxjs';
 import {IComment} from '../../../lib/interface/comments.interface';
 import {LoaderComponent} from '../../shared/loader/loader.component';

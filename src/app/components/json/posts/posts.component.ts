@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {PostsService} from '../../../lib/services/posts.service';
 import {CommonModule} from '@angular/common';
-import {combineLatest, map, shareReplay, switchMap} from 'rxjs';
+import { map,switchMap} from 'rxjs';
 import {Router, RouterModule} from '@angular/router';
 @Component({
   selector: 'app-posts',

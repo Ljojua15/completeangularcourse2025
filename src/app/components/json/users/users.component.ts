@@ -4,6 +4,7 @@ import { IUser } from '../../../lib/interface/users.interface';
 import { PostsService } from '../../../lib/services/posts.service';
 import Swal from 'sweetalert2';
 import {Subscription} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -14,6 +15,7 @@ import {Subscription} from 'rxjs';
 export class UsersComponent implements OnDestroy{
 
 private readonly postsService = inject(PostsService)
+  private router = inject(Router);
 public users : IUser[] = []
 
 public usersList$ = this.postsService.getUsers$();
@@ -47,6 +49,10 @@ private subscription = new Subscription();
     this.subscription.add(sub);
   }
 
+  public openAlbum(id:number){
+    this.postsService.$albumId$.set(id)
+    this.router.navigate(['/albums/']);
+  }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
