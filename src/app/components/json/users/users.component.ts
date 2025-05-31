@@ -22,7 +22,7 @@ private subscription = new Subscription();
 
   showAlert(id:number) {
 
-    const sub = this.postsService.getCureentUser$(id).subscribe({
+    const sub = this.postsService.getCurrentUser$(id).subscribe({
       next: (result) => {
         Swal.fire({
           title: '<strong>Company Info:</strong>',

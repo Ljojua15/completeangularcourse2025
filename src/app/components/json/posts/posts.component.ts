@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {PostsService} from '../../../lib/services/posts.service';
 import {CommonModule} from '@angular/common';
 import {combineLatest, map, shareReplay, switchMap} from 'rxjs';
-import { RouterModule } from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 @Component({
   selector: 'app-posts',
   imports: [CommonModule,RouterModule],
@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
 })
 export class PostsComponent {
   private postService = inject(PostsService);
-
+  private router = inject(Router);
   public allPosts$ = this.postService.getPosts$()
   public allUsers$ = this.postService.getUsers$();
 
@@ -48,6 +48,12 @@ export class PostsComponent {
     )
   );
 
+  public takePostId(postId:number){
+    console.log('postId:',postId)
+    this.postService.$postId$.set(postId)
+    this.router.navigate(['/comments']);
+
+  }
   // public usersWithName$ = combineLatest([this.allPosts$, this.allUsers$]).pipe(
   //   map(([posts, users]) => {
   //     const postsWithUser = posts.map(post => {

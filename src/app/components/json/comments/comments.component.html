@@ -1,1 +1,49 @@
-<p>comments works!</p>
+<!--<div class="container my-5" *ngIf="getAllComments$ | async as getAllComments">-->
+<!--  <div class="card shadow-sm">-->
+<!--    <div class="card-body bg-white">-->
+<!--      <h2 class="card-title mb-4 text-center">Comments</h2>-->
+
+<!--      <div class="list-group">-->
+<!--        <div-->
+<!--          class="list-group-item list-group-item-action flex-column align-items-start mb-2"-->
+<!--          *ngFor="let comment of getAllComments"-->
+<!--        >-->
+<!--          <div class="d-flex w-100 justify-content-between">-->
+<!--            <h5 class="mb-1 text-primary">{{ comment.name }}</h5>-->
+<!--            <small class="text-muted">{{ comment.email }}</small>-->
+<!--          </div>-->
+<!--          <p class="mb-1">{{comment.body }}</p>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<div *ngIf="getAllComments$ | async as getAllComments; else loading">
+  <div class="container my-5">
+    <div class="card shadow-sm">
+      <div class="card-body bg-white">
+        <h2 class="card-title mb-4 text-center">Comments</h2>
+        <div class="list-group">
+          <div
+            class="list-group-item list-group-item-action flex-column align-items-start mb-2"
+            *ngFor="let comment of getAllComments"
+          >
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1 text-primary">{{ comment.name }}</h5>
+              <small class="text-muted">{{ comment.email }}</small>
+            </div>
+            <p class="mb-1">{{ comment.body }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+<app-loader />
+</ng-template>
+
+
+
