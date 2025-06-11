@@ -3,12 +3,11 @@ import {CommonModule} from '@angular/common';
 import {PostsService} from '../../../lib/services/posts.service';
 import {IAlbum} from '../../../lib/interface/albums.interface';
 import {map, Observable, switchMap} from 'rxjs';
-import {LoaderComponent} from '../../shared/loader/loader.component';
 import {IUser} from '../../../lib/interface/users.interface';
 
 @Component({
   selector: 'app-albums',
-  imports: [CommonModule, LoaderComponent],
+  imports: [CommonModule],
   templateUrl: './albums.component.html',
   styleUrl: './albums.component.scss'
 })

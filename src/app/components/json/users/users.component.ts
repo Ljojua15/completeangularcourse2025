@@ -14,13 +14,12 @@ import {Router} from '@angular/router';
 })
 export class UsersComponent implements OnDestroy{
 
-private readonly postsService = inject(PostsService)
+private readonly postsService = inject(PostsService);
   private router = inject(Router);
 public users : IUser[] = []
 
 public usersList$ = this.postsService.getUsers$();
 
-private subscription = new Subscription();
 
   showAlert(id:number) {
 
@@ -46,7 +45,6 @@ private subscription = new Subscription();
       }
 
     })
-    this.subscription.add(sub);
   }
 
   public openAlbum(id:number){
@@ -54,7 +52,6 @@ private subscription = new Subscription();
     this.router.navigate(['/albums/']);
   }
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 
 }

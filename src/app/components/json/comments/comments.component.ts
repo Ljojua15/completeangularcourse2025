@@ -1,13 +1,13 @@
 import {Component, computed, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PostsService} from '../../../lib/services/posts.service';
-import {Observable, switchMap, tap} from 'rxjs';
+import {Observable} from 'rxjs';
 import {IComment} from '../../../lib/interface/comments.interface';
 import {LoaderComponent} from '../../shared/loader/loader.component';
 
 @Component({
   selector: 'app-comments',
-  imports: [CommonModule, LoaderComponent],
+  imports: [CommonModule],
   templateUrl: './comments.component.html',
   styleUrl: './comments.component.scss'
 })

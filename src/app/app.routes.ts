@@ -17,7 +17,7 @@ export const routes: Routes = [
     // {path:"edit/:id", component:ReservationFormComponent},
     // {path:"**", component:HomeComponent},
 
-    
+
     // {path:"", component:MainContentComponent},
     // {path:"posts", component: PostsComponent},
     // {path:"comments", component:CommentsComponent},
@@ -27,6 +27,8 @@ export const routes: Routes = [
     // {path:"users", component:UsersComponent},
     // {path:"**", component:MainContentComponent},
 
+    //course - 3
+
   { path: "", loadComponent: () => import('./components/json/main-content/main-content.component').then(m => m.MainContentComponent) },
   { path: "posts", loadComponent: () => import('./components/json/posts/posts.component').then(m => m.PostsComponent) },
   { path: "comments", loadComponent: () => import('./components/json/comments/comments.component').then(m => m.CommentsComponent) },
@@ -35,5 +37,9 @@ export const routes: Routes = [
   { path: "todos", loadComponent: () => import('./components/json/todos/todos.component').then(m => m.TodosComponent) },
   { path: "users", loadComponent: () => import('./components/json/users/users.component').then(m => m.UsersComponent) },
   { path: "**", redirectTo: "" },
+
+  //course - 4
+  // { path: "", loadComponent: () => import('./components/course4-ecomerce/body/body.component').then(m => m.BodyComponent) },
+  // { path: "body", loadComponent: () => import('./components/course4-ecomerce/body/body.component').then(m => m.BodyComponent) }
 
 ];

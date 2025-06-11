@@ -1,5 +1,5 @@
 
-<div *ngIf="getAllComments$ | async as getAllComments; else loading">
+<div *ngIf="getAllComments$ | async as getAllComments">
   <div class="container my-5">
     <div class="card shadow-sm">
       <div class="card-body bg-white">
@@ -21,9 +21,6 @@
   </div>
 </div>
 
-<ng-template #loading>
-<app-loader />
-</ng-template>
 
 
 
